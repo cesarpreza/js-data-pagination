@@ -17,7 +17,23 @@ For assistance:
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
+function studentPages(list, page) {
+   let startIndex = (page * 9) - 9;
+   let endIndex = page * 9;
 
+   let studentList = document.querySelector('.student-list');
+   studentList.innerHTML = '';
+
+   for (let i = 0; i <= list.length; i++) {
+      let studentData = list[i];
+     console.log(studentData); //Logs all student names to the console
+      if (i >= startIndex && i < endIndex) {
+         //
+      }
+
+   }
+
+}
 
 
 /*
@@ -28,3 +44,4 @@ This function will create and insert/append the elements needed for the paginati
 
 
 // Call functions
+studentPages(data);
