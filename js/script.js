@@ -11,7 +11,7 @@ For assistance:
    Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
 */
 
-
+let body = document.querySelector('body');
 
 /*
 Create the `showPage` function
@@ -32,11 +32,16 @@ function studentPages(list, page) {
          /*create the elements that will be inserted into the dom 
             with the correspondiong student information
          */
-         let listItem = `
-         <h3>${ studentData }</h3>
+         let listItem = document.createElement('li');
+         listItem.setAttribute('class', 'student-item cf');
 
-         `;
-         studentList.appendChild(listItem);
+         let newDiv = document.createElement('div');
+         newDiv.setAttribute('class', 'student-details');
+
+         let studentImage = document.createElement('img');
+         studentImage.setAttribute('class', 'avatar');
+         studentImage.setAttribute('src', `${studentData.picture.large}`);
+         body.appendChild(studentImage);
       }
 
    }
