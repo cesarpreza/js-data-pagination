@@ -18,17 +18,25 @@ Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
 function studentPages(list, page) {
-   let startIndex = (page * 9) - 9;
-   let endIndex = page * 9;
+   let itemsPerPage = 9;
+   let startIndex = (page * itemsPerPage) - itemsPerPage;
+   let endIndex = page * itemsPerPage;
 
    let studentList = document.querySelector('.student-list');
    studentList.innerHTML = '';
 
    for (let i = 0; i <= list.length; i++) {
       let studentData = list[i];
-     console.log(studentData); //Logs all student names to the console
+      console.log(studentData); //Logs all student names to the console
       if (i >= startIndex && i < endIndex) {
-         //
+         /*create the elements that will be inserted into the dom 
+            with the correspondiong student information
+         */
+         let listItem = `
+         <h3>${ studentData }</h3>
+
+         `;
+         studentList.appendChild(listItem);
       }
 
    }
@@ -44,4 +52,4 @@ This function will create and insert/append the elements needed for the paginati
 
 
 // Call functions
-studentPages(data);
+studentPages(data, 1);
