@@ -78,6 +78,13 @@ function addPagination(list) {
       linkList.firstChild.firstChild.setAttribute('class', 'active');
    }
    
+   linkList.addEventListener('click', (e) => {
+      buttons = e.target.nodeName;
+
+      if (buttons === "BUTTON") {
+         console.log('button clicked');
+      }
+   })
 
 
    console.log(numberOfPages);
