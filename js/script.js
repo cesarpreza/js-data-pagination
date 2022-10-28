@@ -79,10 +79,16 @@ function addPagination(list) {
    }
    
    linkList.addEventListener('click', (e) => {
-      buttons = e.target.nodeName;
 
-      if (buttons === "BUTTON") {
-         console.log('button clicked');
+      buttons = e.target;
+
+      if (buttons.nodeName === "BUTTON") {
+         if (buttons.classList.contains('active')) {
+            buttons.removeAttribute('class');
+         } else {
+            buttons.setAttribute('class', 'active');
+         }
+         console.log(buttons);
       }
    })
 
