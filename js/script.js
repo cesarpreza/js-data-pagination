@@ -1,10 +1,12 @@
 let body = document.querySelector('body');
+let pageNumber = 1;
+
 
 /*
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
-function studentPages(list, page) {
+function showPage(list, page) {
    //create an element to store the number of student items per page
    let itemsPerPage = 9;
    let startIndex = (page * itemsPerPage) - itemsPerPage;
@@ -51,9 +53,10 @@ function studentPages(list, page) {
             studentDetailsDiv.appendChild(studentImage);
             studentImage.insertAdjacentElement('afterend', header3); 
             header3.insertAdjacentElement('afterend', span)
-            studentDetailsDiv.insertAdjacentElement('afterend', dateSpan);
+         studentDetailsDiv.insertAdjacentElement('afterend', dateSpan);
       }
    }
+   page = addPagination(data);
 }
 
 
@@ -93,13 +96,14 @@ function addPagination(list) {
             if (listItemBtns[i].classList.contains('active')) {
                listItemBtns[i].classList.remove('active');
                buttons.setAttribute('class', 'active');
+               pageNumber = parseInt(buttons.textContent);
+               //return pageNumber;
             }
-            console.log(listItemBtns[i]);
          }
+         console.log(pageNumber);
+         return pageNumber;
       }
    })
-
-
    console.log(numberOfPages);
 }
 
@@ -118,5 +122,6 @@ function addPagination(list) {
 
 
 // Call functions
-studentPages(data, 1);
-addPagination(data);
+console.log('value of page number is ' + pageNumber)
+//addPagination(data, pageNumber);
+showPage(data, pageNumber);
