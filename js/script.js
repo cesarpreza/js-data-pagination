@@ -67,6 +67,7 @@ function addPagination(list) {
    let buttonNumbers = 0;
    let linkList = document.querySelector('.link-list');
    linkList.innerHTML = '';
+   
 
    for (let i = 0; i < numberOfPages; i++) {
       let buttonList = document.createElement('li');
@@ -81,21 +82,26 @@ function addPagination(list) {
    linkList.addEventListener('click', (e) => {
 
       buttons = e.target;
+      let listItemBtns = document.querySelectorAll('button');
 
+      /* loops through each pagination button and checks for the class 'active'
+         if the button does not contain the className 'active', the attribute is added to that button
+         and removed from any other button
+      */
       if (buttons.nodeName === "BUTTON") {
-         if (buttons.classList.contains('active')) {
-            buttons.removeAttribute('class');
-         } else {
-            buttons.setAttribute('class', 'active');
+         for (let i = 0; i < listItemBtns.length; i++) {
+            if (listItemBtns[i].classList.contains('active')) {
+               listItemBtns[i].classList.remove('active');
+               buttons.setAttribute('class', 'active');
+            }
+            console.log(listItemBtns[i]);
          }
-         console.log(buttons);
       }
    })
 
 
    console.log(numberOfPages);
 }
-
 
 
 
