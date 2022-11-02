@@ -1,4 +1,3 @@
-let body = document.querySelector('body');
 let pageNumber = 1;
 
 
@@ -18,7 +17,7 @@ function showPage(list, page) {
    //Loop through the array of students and create an element for each student. 
    for (let i = 0; i <= list.length; i++) {
       let studentData = list[i];
-      if (i >= startIndex && i < endIndex) {
+      if (i >= startIndex && i <= endIndex) {
          /*create the elements that will be inserted into the dom
             with the correspondiong student information
          */
@@ -56,7 +55,7 @@ function showPage(list, page) {
          studentDetailsDiv.insertAdjacentElement('afterend', dateSpan);
       }
    }
-   page = addPagination(data);
+   //page = addPagination(data);
 }
 
 
@@ -97,7 +96,7 @@ function addPagination(list) {
                listItemBtns[i].classList.remove('active');
                buttons.setAttribute('class', 'active');
                pageNumber = parseInt(buttons.textContent);
-               //return pageNumber;
+               showPage(data, pageNumber);
             }
          }
          console.log(pageNumber);
@@ -123,5 +122,5 @@ function addPagination(list) {
 
 // Call functions
 console.log('value of page number is ' + pageNumber)
-//addPagination(data, pageNumber);
+addPagination(data, pageNumber);
 showPage(data, pageNumber);
