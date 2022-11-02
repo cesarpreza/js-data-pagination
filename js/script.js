@@ -17,7 +17,7 @@ function showPage(list, page) {
    //Loop through the array of students and create an element for each student. 
    for (let i = 0; i <= list.length; i++) {
       let studentData = list[i];
-      if (i >= startIndex && i <= endIndex) {
+      if (i >= startIndex && i < endIndex) {
          /*create the elements that will be inserted into the dom
             with the correspondiong student information
          */
@@ -99,12 +99,56 @@ function addPagination(list) {
                showPage(data, pageNumber);
             }
          }
-         console.log(pageNumber);
          return pageNumber;
-      }
-   })
-   console.log(numberOfPages);
-}
+      };
+   });
+};
+
+
+//create a search bar and display it to the browser
+function searchStudents() {
+   let pageHeader = document.querySelector('header');
+   let searchBarLabel = document.createElement('label');
+   let inputSpan = document.createElement('span');
+   let searchInput = document.createElement('input');
+   let searchBtn = document.createElement('button');
+   let searchImgIcon = document.createElement('img');
+
+   searchImgIcon.setAttribute('src', 'img/icn-search.svg');
+
+   searchBtn.setAttribute('type', 'button');
+
+   searchImgIcon.setAttribute('alt', 'Search icon');
+
+   searchInput.setAttribute('id', 'search');
+   searchInput.setAttribute('placeholder', 'Search by name..');
+
+   inputSpan.textContent = 'Search by name';
+
+   searchBarLabel.setAttribute('for', 'search');
+   searchBarLabel.setAttribute('class', 'student-search');
+
+   pageHeader.appendChild(searchBarLabel);
+   searchBarLabel.appendChild(inputSpan);
+   searchBarLabel.appendChild(searchInput);
+   searchBarLabel.appendChild(searchBtn);
+   searchBtn.appendChild(searchImgIcon);
+
+   //
+
+
+
+
+
+   console.log(searchBarLabel);
+};
+
+searchStudents();
+
+
+
+
+
 
 
 
@@ -121,6 +165,5 @@ function addPagination(list) {
 
 
 // Call functions
-console.log('value of page number is ' + pageNumber)
 addPagination(data, pageNumber);
 showPage(data, pageNumber);
