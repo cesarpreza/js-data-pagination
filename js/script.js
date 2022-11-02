@@ -106,7 +106,7 @@ function addPagination(list) {
 
 
 //create a search bar and display it to the browser
-function searchStudents() {
+function searchStudents(data) {
    let pageHeader = document.querySelector('header');
    let searchBarLabel = document.createElement('label');
    let inputSpan = document.createElement('span');
@@ -134,7 +134,22 @@ function searchStudents() {
    searchBarLabel.appendChild(searchBtn);
    searchBtn.appendChild(searchImgIcon);
 
-   //
+   //add event listener to the input
+   //get the value of the search input and return it to the console
+   searchInput.addEventListener('keyup', e => {
+      let input = e.target.value;
+
+      for (let i = 0; i <= data.length; i++) {
+         if (data[i].name.first.includes(input)) {
+            console.log(data[i].name.first);
+         } else {
+            console.log('no')
+         }
+      }
+      
+
+      console.log(input, data[0].name.first);
+   })
 
 
 
@@ -143,7 +158,7 @@ function searchStudents() {
    console.log(searchBarLabel);
 };
 
-searchStudents();
+searchStudents(data);
 
 
 
