@@ -106,7 +106,7 @@ function addPagination(list) {
 
 
 //create a search bar and display it to the browser
-function searchStudents(data) {
+function searchStudents(data, page) {
    let pageHeader = document.querySelector('header');
    let searchBarLabel = document.createElement('label');
    let inputSpan = document.createElement('span');
@@ -137,28 +137,22 @@ function searchStudents(data) {
    //add event listener to the input
    //get the value of the search input and return it to the console
    searchInput.addEventListener('keyup', e => {
-      let input = e.target.value;
+      let input = e.target.value.toLowerCase();
+      let filterdStudents = data.filter((names) => {
+         return names.name.first.toLowerCase().includes(input);
+      });
 
-      for (let i = 0; i <= data.length; i++) {
-         if (data[i].name.first.includes(input)) {
-            console.log(data[i].name.first);
-         } else {
-            console.log('no')
-         }
-      }
-      
-
-      console.log(input, data[0].name.first);
+      addPagination(filterdStudents, page);
+      showPage(filterdStudents, page);
+      //console.log(filterdStudents);
    })
 
 
 
 
-
-   console.log(searchBarLabel);
 };
 
-searchStudents(data);
+searchStudents(data, pageNumber);
 
 
 
