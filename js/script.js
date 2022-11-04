@@ -140,6 +140,7 @@ function searchStudents(data, page) {
       let pageDiv = document.querySelector('.page')
       let header = document.querySelector('header');
       let noResults = document.createElement('h3');
+      let h3 = document.querySelector('.no-results');
       noResults.setAttribute('class', 'no-results');
       let studentList = document.querySelector('.student-list');
       let input = e.target.value.toLowerCase();
@@ -151,15 +152,15 @@ function searchStudents(data, page) {
          studentList.style.display = 'none';
          noResults.textContent = 'No results';
          header.insertAdjacentElement('afterend', noResults);
-         console.log('no data to display');
+         if (noResults) {
+            pageDiv.removeChild(h3);
+         }
       } else {
-         let h3 = document.querySelector('.no-results');
          studentList.style.display = 'grid';
          addPagination(filterdStudents, page);
          showPage(filterdStudents, page);
          pageDiv.removeChild(h3);
       }
-      console.log(filterdStudents, noResults)
    })
 
 
@@ -167,27 +168,10 @@ function searchStudents(data, page) {
 
 };
 
-searchStudents(data, pageNumber);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 // Call functions
+searchStudents(data, pageNumber);
 addPagination(data, pageNumber);
 showPage(data, pageNumber);
