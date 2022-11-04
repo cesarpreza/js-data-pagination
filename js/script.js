@@ -137,14 +137,29 @@ function searchStudents(data, page) {
    //add event listener to the input
    //get the value of the search input and return it to the console
    searchInput.addEventListener('keyup', e => {
+      let pageDiv = document.querySelector('.page')
+      let header = document.querySelector('header');
+      let noResults = document.createElement('h3');
+      noResults.setAttribute('class', 'no-results');
+      let studentList = document.querySelector('.student-list');
       let input = e.target.value.toLowerCase();
       let filterdStudents = data.filter((names) => {
          return names.name.first.toLowerCase().includes(input);
       });
 
-      addPagination(filterdStudents, page);
-      showPage(filterdStudents, page);
-      //console.log(filterdStudents);
+      if (filterdStudents.length === 0) {
+         studentList.style.display = 'none';
+         noResults.textContent = 'No results';
+         header.insertAdjacentElement('afterend', noResults);
+         console.log('no data to display');
+      } else {
+         let h3 = document.querySelector('.no-results');
+         studentList.style.display = 'grid';
+         addPagination(filterdStudents, page);
+         showPage(filterdStudents, page);
+         pageDiv.removeChild(h3);
+      }
+      console.log(filterdStudents, noResults)
    })
 
 
