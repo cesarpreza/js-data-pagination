@@ -15,7 +15,7 @@ function showPage(list, page) {
    studentList.innerHTML = '';
 
    //Loop through the array of students and create an element for each student. 
-   for (let i = 0; i <= list.length; i++) {
+   for (let i = 0; i < list.length; i++) {
       let studentData = list[i];
       if (i >= startIndex && i < endIndex) {
          /*create the elements that will be inserted into the dom
@@ -159,7 +159,7 @@ function searchStudents(data, page) {
          studentList.style.display = 'grid';
          addPagination(filterdStudents, page);
          showPage(filterdStudents, page);
-         pageDiv.removeChild(h3);
+         //pageDiv.removeChild(h3);
       }
    })
 
